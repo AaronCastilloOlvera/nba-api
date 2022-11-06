@@ -13,7 +13,7 @@ namespace nba_api.Controllers
         public TeamController(ITeamService service, NBAContext db)
         {
             teamService = service;
-            nbaContext = db;
+            nbaContext = db;       
         }
 
         [HttpGet]
@@ -29,10 +29,36 @@ namespace nba_api.Controllers
             return Ok();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Team team)
+        {
+            teamService.Update(id, team);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            teamService.Delete(id);
+            return Ok();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Crear la db
         [HttpGet]
-        [Route("createdb")]
+        [Route("createdb")]  //https://localhost:7188/api/team/createdb
         public IActionResult CreateDB()
         {
             nbaContext.Database.EnsureCreated();

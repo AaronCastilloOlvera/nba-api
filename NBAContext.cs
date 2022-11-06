@@ -24,7 +24,15 @@ namespace nba_api
 
                 t.Property( t => t.Name).IsRequired(false);
 
-                t.Property(t => t.Image).IsRequired(false);
+                t.Property(t => t.ShortName).IsRequired(false);
+
+                t.Property(t => t.UrlLogo).IsRequired(false);
+
+                t.Property(t => t.Divition).IsRequired(false);
+
+                t.Property(t => t.Location).IsRequired(false);
+
+               t.Property(t => t.PrincipalColor).IsRequired(false);
 
             });
         }
