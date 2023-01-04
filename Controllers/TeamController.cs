@@ -3,7 +3,7 @@ using nba_api.Models;
 using nba_api.Services;
 
 namespace nba_api.Controllers
-{ 
+{
     [Route("api/[controller]")]
     public class TeamController : Controller
     {
@@ -13,7 +13,7 @@ namespace nba_api.Controllers
         public TeamController(ITeamService service, NBAContext db)
         {
             teamService = service;
-            nbaContext = db;       
+            nbaContext = db;
         }
 
         [HttpGet]
@@ -21,6 +21,13 @@ namespace nba_api.Controllers
         {
             return Ok(teamService.Get());
         }
+
+        [HttpGet("{divition}")]  //"$leagueId={leagueId}")
+        public IActionResult GetByDivition( string divition ) 
+        {
+            return Ok(teamService.GetByDivition(divition));
+        }
+
 
         [HttpPost]
         public IActionResult Post([FromBody] Team team)

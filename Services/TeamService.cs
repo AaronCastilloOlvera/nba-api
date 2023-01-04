@@ -16,6 +16,12 @@ namespace nba_api.Services
             return context.Teams;
         }
 
+        public IEnumerable <Team> GetByDivition(string divition)
+        {
+            return context.Teams.Where(t => t.Divition == divition);
+        }
+
+
         public async Task Save(Team team)
         {
             context.Add(team);
@@ -48,16 +54,15 @@ namespace nba_api.Services
                 context.Remove(myTeam);
                 await context.SaveChangesAsync();
             }
-
         }
-
-
     }
 
 
     public interface ITeamService
     {
         IEnumerable<Team> Get();
+
+        IEnumerable<Team> GetByDivition(string divition);
 
         Task Save(Team team);
 
